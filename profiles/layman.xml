@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layman>
+  <overlay contact="liucougar@gmail.com" name="liucougar" src="git://github.com/liucougar/portage" status="unofficial" type="git">
+    <description>liucougar ebuilds.</description>
+    <link>http://www.liucougar.net/blog/portage</link>
+  </overlay>
+</layman>
