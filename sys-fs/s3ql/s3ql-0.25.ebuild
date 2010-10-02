@@ -17,10 +17,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="contrib"
 
-DEPEND="dev-python/setuptools"
-RDEPEND="dev-cpp/gccxml
-	sys-fs/fuse
-	app-arch/xz-utils
+DEPEND="dev-python/setuptools
+	dev-cpp/gccxml"
+RDEPEND="sys-fs/fuse
 	dev-python/argparse
 	dev-python/pycryptopp
 	>=dev-python/apsw-3.7.0
