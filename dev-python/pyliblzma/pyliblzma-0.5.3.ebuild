@@ -18,5 +18,5 @@ KEYWORDS="~x86 ~amd64"
 SLOT="0"
 IUSE=""
 
-
-
+DEPEND="dev-python/setuptools"
+RDEPEND="app-arch/xz-utils"
