@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>no-herd</herd>
+	<maintainer>
+	  <email>liucougar@gmail.com</email>
+    	<name>Liucougar</name>
+	</maintainer>
+	<longdescription lang="en">
+		S3QL is a file system that stores all its data online. It supports
+		Amazon S3  as well as arbitrary SFTP servers and effectively provides
+		you with a hard disk of dynamic, infinite capacity that can be accessed
+		from any computer with internet access. 
+	</longdescription>
+	<use>
+		<flag name='contrib'>
+			Install contrib files into doc
+		</flag>
+		<flag name='sftp'>
+			Enable SFTP backend (pulls in <pkg>dev-python/paramiko</pkg> as
+			dependency)
+		</flag>
+	</use>
+</pkgmetadata>
+
