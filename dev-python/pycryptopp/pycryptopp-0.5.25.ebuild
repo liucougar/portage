@@ -21,3 +21,4 @@ IUSE=""
 
 DEPEND="dev-python/setuptools"
 RDEPEND=""
+RESTRICT_PYTHON_ABIS="3.*"

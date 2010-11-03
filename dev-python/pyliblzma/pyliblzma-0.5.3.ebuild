@@ -20,3 +20,4 @@ IUSE=""
 
 DEPEND="dev-python/setuptools"
 RDEPEND="app-arch/xz-utils"
+RESTRICT_PYTHON_ABIS="3.*"

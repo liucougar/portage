@@ -28,6 +28,7 @@ RDEPEND="sys-fs/fuse
 	>=dev-python/apsw-3.7.0
 	sftp? ( dev-python/paramiko )
 	dev-python/pyliblzma"
+RESTRICT_PYTHON_ABIS="3.*"
 
 function src_install(){
 	distutils_src_install
