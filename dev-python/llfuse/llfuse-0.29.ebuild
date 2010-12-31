@@ -17,7 +17,6 @@ IUSE=""
 
 DEPEND="dev-python/setuptools
 	dev-python/cython"
-
 RDEPEND=""
 
 src_prepare(){

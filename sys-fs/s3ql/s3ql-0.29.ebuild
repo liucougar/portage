@@ -17,12 +17,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="contrib sftp"
 
-DEPEND="dev-python/setuptools
+COMMON="dev-python/setuptools"
+DEPEND="${COMMON}
 	test? ( net-misc/rsync[xattr]
 		dev-python/unittest2
-	)
-	dev-cpp/gccxml"
-RDEPEND="sys-fs/fuse
+	)"
+RDEPEND="${COMMON}
+	sys-fs/fuse
 	dev-python/argparse
 	dev-python/pycryptopp
 	>=dev-python/apsw-3.7.0
