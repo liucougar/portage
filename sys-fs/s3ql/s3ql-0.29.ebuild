@@ -27,7 +27,8 @@ RDEPEND="sys-fs/fuse
 	dev-python/pycryptopp
 	>=dev-python/apsw-3.7.0
 	sftp? ( dev-python/paramiko )
-	dev-python/pyliblzma"
+	dev-python/pyliblzma
+	dev-python/llfuse"
 RESTRICT_PYTHON_ABIS="3.*"
 
 function src_install(){
