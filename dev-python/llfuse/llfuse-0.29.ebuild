@@ -13,9 +13,16 @@ SRC_URI="http://pypi.python.org/packages/source/l/llfuse/${P}.tar.bz2"
 LICENSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc"
+IUSE=""
 
 DEPEND="dev-python/setuptools
 	dev-python/cython"
 
 RDEPEND=""
+
+src_prepare(){
+	distutils_src_prepare
+	cd "${S}"
+	sed -i -e '/sphinx_cython/d' setup.py || die "failed to remove document"
+	sed -i -e "s/'-Werror',//" setup.py
+}
