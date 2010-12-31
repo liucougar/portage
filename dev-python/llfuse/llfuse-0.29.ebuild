@@ -8,20 +8,19 @@ inherit distutils
 
 DESCRIPTION="Python bindings for the low-level FUSE API"
 HOMEPAGE="http://python-llfuse.googlecode.com/"
-SRC_URI="http://pypi.python.org/packages/source/l/llfuse/${P}.tar.bz2"
+SRC_URI="http://pypi.python.org/packages/source/l/llfuse/${P}.7.tar.bz2"
 
 LICENSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-python/setuptools
-	dev-python/cython"
+DEPEND="dev-python/setuptools"
 RDEPEND=""
 
 src_prepare(){
 	distutils_src_prepare
 	cd "${S}"
 	sed -i -e '/sphinx_cython/d' setup.py || die "failed to remove document"
-	sed -i -e "s/'-Werror',//" setup.py
+	sed -i -e "s/'-Werror',/'-Werror','-fno-strict-aliasing',/" setup.py
 }
