@@ -9,7 +9,7 @@ inherit distutils
 
 DESCRIPTION="Python bindings for the low-level FUSE API"
 HOMEPAGE="http://python-llfuse.googlecode.com/"
-SRC_URI="http://pypi.python.org/packages/source/l/llfuse/${P}.7.tar.bz2"
+SRC_URI="http://pypi.python.org/packages/source/l/llfuse/${P}.tar.bz2"
 
 LICENSE=""
 SLOT="0"
