@@ -29,7 +29,7 @@ RDEPEND="${COMMON}
 	>=dev-python/apsw-3.7.0
 	sftp? ( dev-python/paramiko )
 	dev-python/pyliblzma
-	dev-python/llfuse"
+	>=dev-python/llfuse-0.31"
 RESTRICT_PYTHON_ABIS="3.*"
 
 function src_install(){
