@@ -15,7 +15,7 @@ SRC_URI="http://s3ql.googlecode.com/files/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="contrib sftp"
+IUSE="contrib test"
 
 COMMON="dev-python/setuptools"
 DEPEND="${COMMON}
@@ -27,9 +27,8 @@ RDEPEND="${COMMON}
 	dev-python/argparse
 	dev-python/pycryptopp
 	>=dev-python/apsw-3.7.0
-	sftp? ( dev-python/paramiko )
 	dev-python/pyliblzma
-	>=dev-python/llfuse-0.31"
+	>=dev-python/llfuse-0.35"
 RESTRICT_PYTHON_ABIS="3.*"
 
 function src_install(){
