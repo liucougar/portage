@@ -1,0 +1,57 @@
+# /etc/conf.d/agnVPN: config file for /etc/init.d/agnVPN
+#
+# Customize this portion for the individual user/installation. At this point,
+# only the SSL DA VPN is available so the user should have their profile in
+# Service Manager set accordingly.
+#
+
+#
+# Edit the three variables below for account/username/password.
+#
+# Example:
+#
+#       NETVPN_ACCOUNT="atap"
+#       NETVPN_USERNAME="mlittl9"
+#       NETVPN_PASSWORD="keywest"
+#
+
+NETVPN_ACCOUNT=""
+NETVPN_USERNAME=""
+NETVPN_PASSWORD=""
+
+#
+# Uncomment the address appropriate for your test situation. IBM testing
+# should go to the "Production" server.
+#
+
+# SERVICE_MANAGER_ADDRESS="129.37.1.7"        # AT&T Test RIG
+# SERVICE_MANAGER_ADDRESS="204.146.172.230"   # AT&T Production RIG
+
+export NETVPN_ACCOUNT NETVPN_USERNAME NETVPN_PASSWORD
+export SERVICE_MANAGER
+
+HTTP_PROXY_ADDRESS=""
+HTTP_PROXY_PORT=""
+
+export HTTP_PROXY_ADDRESS HTTP_PROXY_PORT
+export HTTP_PROXY_USER HTTP_PROXY_PASSWORD
+
+if [[ -n "${HTTP_PROXY_ADDRESS}" ]]
+then
+	PROXYARGS="${HTTP_PROXY_ADDRESS}"
+
+	if [[ -n "${HTTP_PROXY_PORT}" ]]
+	then
+		PROXYARGS="${PROXYARGS}:${HTTP_PROXY_PORT}"	
+	fi
+
+	if [[ -n "${HTTP_PROXY_USER}" ]]
+	then
+		PROXYARGS="${PROXYARGS} ${HTTP_PROXY_USER}"	
+	fi
+
+	if [[ -n "${HTTP_PROXY_PASSWORD}" ]]
+	then
+		PROXYARGS="${PROXYARGS} ${HTTP_PROXY_PASSWORD}"	
+	fi
+fi

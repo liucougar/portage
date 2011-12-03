@@ -1,0 +1,24 @@
+#!/sbin/runscript
+#
+# agnVPN:	Connects to a VPN using the AGNS NetClient
+#
+# $Header: $
+
+depend() {
+	need net localmount agnclientd agnLogd
+}
+
+start() {
+    ebegin "Connecting to the AT&T Global Network"
+    start-stop-daemon --start --exec /opt/agns/bin/vpnCLI \
+        --pidfile /var/run/agnVPN.pid --make-pidfile --background \
+	-- ${SERVICE_MANAGER_ADDRESS} ${PROXYARGS}
+    eend $?
+}
+
+stop() {
+    ebegin "Disconnecting from the AT&T Global Network"
+    start-stop-daemon --stop --exec /opt/agns/bin/vpnCLI \
+         --pidfile /var/run/agnVPN.pid
+    eend $?
+}

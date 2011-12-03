@@ -1,0 +1,174 @@
+diff -ru clean/etc/rc.d/init.d/agnclientd dirty/etc/rc.d/init.d/agnclientd
+--- clean/etc/rc.d/init.d/agnclientd	2007-11-28 14:11:49.000000000 -0500
++++ dirty/etc/rc.d/init.d/agnclientd	2007-11-30 22:38:31.000000000 -0500
+@@ -1,70 +1,24 @@
+-#!/bin/sh
++#!/sbin/runscript
+ #
+ # agnclientd:	Starts the AGNS NetClient Daemon
+ #
+ # $Header: $
+-#
+-# chkconfig: 345 97 03
+-# description: AGNS agnclientd
+-# processname: agnclientd
+-# pidfile: /var/run/agnclientd.pid
+-#
+-
+-# Sanity checks.
+-[ -x /opt/agns/bin/agnclientd ] || exit 0
+-
+-# Source function library.
+-. /etc/rc.d/init.d/functions
+ 
+-RETVAL=0
++depend() {
++	need net localmount
++	after bootmisc
++}
+ 
+ start() {
+-    echo -n $"Starting AGNS NetClient Daemon: "
+-    daemon /opt/agns/bin/agnclientd 
+-    RETVAL=$?
+-    echo
+-    [ $RETVAL -eq 0 ] && touch /var/lock/subsys/agnclientd
++    ebegin "Starting AGNS NetClient Daemon"
++    start-stop-daemon --start --exec /opt/agns/bin/agnclientd \
++        --pidfile /var/run/agnclientd.pid
++    eend $?
+ }
+ 
+ stop() {
+-    echo -n $"Stopping AGNS NetClient Daemon: "
+-    killproc agnclientd
+-    RETVAL=$?
+-    echo
+-    if [ $RETVAL -eq 0 ]; then
+-        rm -f /var/lock/subsys/agnclientd
+-    fi
++    ebegin "Stopping AGNS NetClient Daemon"
++    start-stop-daemon --stop --exec /opt/agns/bin/agnclientd \
++         --pidfile /ver/run/agnclientd.pid
++    eend $?
+ }
+-
+-# See how we were called.
+-case "$1" in
+-    start)
+-	start
+-	;;
+-    stop)
+-	stop
+-	;;
+-    status)
+-        status agnclientd
+-	RETVAL=$?
+-        ;;
+-    restart)
+-	stop
+-	start
+-	;;
+-    condrestart)
+-	if [ -f /var/lock/subsys/agnclientd ]; then
+-	    stop
+-	    start
+-	fi
+-	;;
+-    reload)
+-  	killproc agnclientd -HUP
+-	RETVAL=$?
+-        ;;
+-    *)
+-	echo $"Usage: $0 {start|stop|status|restart|condrestart|reload}"
+-	;;
+-esac
+-exit $RETVAL
+-
+diff -ru clean/etc/rc.d/init.d/agnLogd dirty/etc/rc.d/init.d/agnLogd
+--- clean/etc/rc.d/init.d/agnLogd	2007-11-28 14:11:49.000000000 -0500
++++ dirty/etc/rc.d/init.d/agnLogd	2007-11-30 22:38:31.000000000 -0500
+@@ -1,70 +1,25 @@
+-#!/bin/sh
++#!/sbin/runscript
+ #
+ # agnLogd:	Starts the AGNS Log Daemon
+ #
+ # $Header: $
+-#
+-# chkconfig: 345 96 04
+-# description: AGNS agnLogd
+-# processname: agnLogd
+-# pidfile: /var/run/agnLogd.pid
+-#
+-
+-# Sanity checks.
+-[ -x /opt/agns/bin/agnLogd ] || exit 0
+ 
+-# Source function library.
+-. /etc/rc.d/init.d/functions
++depend() {
++    need net localmount
++    after bootmisc
++}
+ 
+-RETVAL=0
+ 
+ start() {
+-    echo -n $"Starting AGNS Log Daemon: "
+-    daemon /opt/agns/bin/agnLogd 
+-    RETVAL=$?
+-    echo
+-    [ $RETVAL -eq 0 ] && touch /var/lock/subsys/agnLogd
++    ebegin "Starting AGNS Log Daemon"
++    start-stop-daemon --start --exec /opt/agns/bin/agnLogd \
++        --pidfile /var/run/agnLogd.pid
++    eend $?
+ }
+ 
+ stop() {
+-    echo -n $"Stopping AGNS Log Daemon: "
+-    killproc agnLogd
+-    RETVAL=$?
+-    echo
+-    if [ $RETVAL -eq 0 ]; then
+-        rm -f /var/lock/subsys/agnLogd
+-    fi
++    ebegin "Stopping AGNS Log Daemon"
++    start-stop-daemon --stop --exec /opt/agns/bin/agnLogd \
++         --pidfile /var/run/agnLogd.pid
++    eend $?
+ }
+-
+-# See how we were called.
+-case "$1" in
+-    start)
+-	start
+-	;;
+-    stop)
+-	stop
+-	;;
+-    status)
+-        status agnLogd
+-	RETVAL=$?
+-        ;;
+-    restart)
+-	stop
+-	start
+-	;;
+-    condrestart)
+-	if [ -f /var/lock/subsys/agnLogd ]; then
+-	    stop
+-	    start
+-	fi
+-	;;
+-    reload)
+-  	killproc agnLogd -HUP
+-	RETVAL=$?
+-        ;;
+-    *)
+-	echo $"Usage: $0 {start|stop|status|restart|condrestart|reload}"
+-	;;
+-esac
+-exit $RETVAL
+-
