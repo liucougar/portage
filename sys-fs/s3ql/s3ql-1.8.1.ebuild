@@ -28,7 +28,7 @@ RDEPEND="${COMMON}
 	dev-python/pycryptopp
 	>=dev-python/apsw-3.7.0
 	dev-python/pyliblzma
-	>=dev-python/llfuse-0.35"
+	>=dev-python/llfuse-0.37.1"
 RESTRICT_PYTHON_ABIS="3.*"
 
 function src_install(){
